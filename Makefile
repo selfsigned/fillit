@@ -6,13 +6,16 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/26 20:55:13 by xperrin           #+#    #+#              #
-#    Updated: 2017/11/28 23:09:41 by xperrin          ###   ########.fr        #
+#    Updated: 2017/12/03 19:00:10 by xperrin          ###   ########.fr        #
 #                                                                              #
 # ****************************************************************************a#
 
 NAME = fillit
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+# Final Cflags:
+# CFLAGS = -Wall -Wextra -Werror
+# Debug Cflags
+CFLAGS = -Wall -Wextra -g
 
 # Directories
 LIBFTDIR = libft
@@ -22,7 +25,8 @@ OBJDIR = obj
 INC = -Iincludes -Ilibft/includes \
 
 # Files
-SRCFILES = main.c
+SRCFILES = main.c \
+	   read.c
 OBJFILES = $(SRCFILES:.c=.o)
 OBJ = $(addprefix $(OBJDIR)/, $(OBJFILES))
 
