@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/03 23:17:19 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/04 13:35:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int		main(int argc, char **argv)
 	fd = 0;
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) <= 0)
 		ft_error();
-	ft_putstr(ft_read(fd)[0]);
+	ft_putstr(ft_read(fd)[3]);
 }

@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:33:46 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/03 23:12:13 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/04 17:30:43 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@ char		**ft_read(int fd)
 	tet_nbr = 0;
 	while ((seek = read(fd, buf, READ_SIZE)))
 	{
-		if ((buf[seek - 1] == '\n' || buf[seek - 1] == '\0') && tet_nbr <= 26)
+		if ((seek == 20 || seek == 21)  &&
+			(buf[seek - 1] == '\n' || buf[seek - 1] == '\0') && tet_nbr <= 26)
 		{
 			buf[seek - 1] = '\0';
 			tab[tet_nbr] = ft_strdup(buf);
 		}
 		else
+		{
+			ft_strdeltab(tab, 27);
 			ft_error();
+		}
 		tet_nbr++;
 	}
 	return (tab);
