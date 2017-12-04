@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:33:46 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/04 17:30:43 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/04 18:47:07 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,27 @@ char		**ft_read(int fd)
 {
 	char	buf[READ_SIZE];
 	int		seek;
-	int		tet_nbr;
+	int		tet_nb;
 	char	**tab;
 
 	if (!(tab = (char**)ft_memalloc(sizeof(char*) * (26 + 1))))
 		return (NULL);
-	tet_nbr = 0;
+	tet_nb = 0;
 	while ((seek = read(fd, buf, READ_SIZE)))
 	{
-		if ((seek == 20 || seek == 21)  &&
-			(buf[seek - 1] == '\n' || buf[seek - 1] == '\0') && tet_nbr <= 26)
+		if (tet_nb <= 26 && (seek == 21 || seek == 20) && buf[seek - 1] == '\n')
 		{
 			buf[seek - 1] = '\0';
-			tab[tet_nbr] = ft_strdup(buf);
+			tab[tet_nb] = ft_strdup(buf);
 		}
 		else
 		{
 			ft_strdeltab(tab, 27);
 			ft_error();
 		}
-		tet_nbr++;
+		tet_nb++;
 	}
+	if (ft_strlen(tab[tet_nb - 1]) != 19)
+			ft_error();
 	return (tab);
 }

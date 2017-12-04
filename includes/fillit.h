@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/04 13:31:38 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/04 18:09:13 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 ** main.c:
 */
 # define ERROR_MSG "error\n"
+
 void	ft_error(void);
 
 /*
@@ -26,6 +27,7 @@ void	ft_error(void);
 ** READ_SIZE 21 because there's 21 characters to read per tet inc newlines
 */
 # define READ_SIZE 21
+
 char	**ft_read(int fd);
 
 #endif
