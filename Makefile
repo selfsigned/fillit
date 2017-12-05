@@ -6,7 +6,7 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/05 15:14:28 by xperrin          ###   ########.fr        #
+#    Updated: 2017/12/05 15:31:27 by bede-fre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,11 @@ OBJDIR = obj
 INC = -Iincludes -Ilibft/includes \
 
 # Files
-SRCFILES =	helpers.c \
-		read.c \
-		main.c
+SRCFILES =	helpers.c	\
+			read.c		\
+			solve.c		\
+			print.c		\
+			main.c
 OBJFILES = $(SRCFILES:.c=.o)
 OBJ = $(addprefix $(OBJDIR)/, $(OBJFILES))
 
