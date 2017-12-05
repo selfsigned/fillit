@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/05 16:50:16 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/05 21:36:04 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 
 # include "libft.h"
 
-typedef struct	s_point
-{
-	int		x;
-	int		y;
-}				t_point;
+# define ERROR 1
+# define SUCCESS 0
 
 typedef struct	s_tetra
 {
-	t_point	pos[4];
+	char	content[17];
 	int		index;
-	int		is_used;
 }				t_tetra;
 
 typedef struct	s_map
