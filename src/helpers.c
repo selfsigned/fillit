@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/05 15:04:27 by xperrin          ###   ########.fr       */
+/*   Created: 2017/12/05 14:42:12 by xperrin           #+#    #+#             */
+/*   Updated: 2017/12/05 14:45:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <unistd.h>
-#include <fcntl.h>
+#include <stdlib.h>
 
-int		main(int argc, char **argv)
+void	ft_error(void)
 {
-	int		fd;
-	t_tetra tet_in[26];
-
-	fd = 0;
-	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) <= 0)
-		ft_error();
-	(void)tet_in;
-	ft_putstr(ft_read(fd)[0]);
+	ft_putstr_fd(ERROR_MSG, 2);
+	exit(1);
 }
+

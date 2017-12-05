@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/26 20:55:13 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/03 19:00:10 by xperrin          ###   ########.fr        #
+#    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
+#    Updated: 2017/12/05 15:14:28 by xperrin          ###   ########.fr        #
 #                                                                              #
-# ****************************************************************************a#
+# **************************************************************************** #
 
 NAME = fillit
 CC = clang
-# Final Cflags:
-# CFLAGS = -Wall -Wextra -Werror
-# Debug Cflags
-CFLAGS = -Wall -Wextra -g
+##### Final Cflags:
+##### CFLAGS = -Wall -Wextra -Werror
+##### Debug Cflags
+CFLAGS = -Wall -Wextra -g -fsanitize=address
 
 # Directories
 LIBFTDIR = libft
@@ -25,8 +25,9 @@ OBJDIR = obj
 INC = -Iincludes -Ilibft/includes \
 
 # Files
-SRCFILES = main.c \
-	   read.c
+SRCFILES =	helpers.c \
+		read.c \
+		main.c
 OBJFILES = $(SRCFILES:.c=.o)
 OBJ = $(addprefix $(OBJDIR)/, $(OBJFILES))
 
