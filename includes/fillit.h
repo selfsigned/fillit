@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/05 15:03:51 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/05 16:50:16 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_map
 {
 	char	*grid;
 	int		width;
+	int		is_solved;
 }				t_map;
 
 /*
@@ -53,11 +54,13 @@ t_tetra			*ft_parse(char **input);
 /*
 ** solve.c
 */
+t_map			ft_algo(t_tetra *tet_in, t_map map, int mapwdth);
+int				ft_solve(t_tetra *tet_in, t_map map);
 
 /*
 ** print.c
 */
-void			ft_display(t_tetra *tab, t_map map);
+void			ft_display(t_map map);
 
 /*
 ** main.c:
