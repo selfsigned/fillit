@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:33:46 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/05 22:08:11 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/06 16:51:38 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,29 @@ char		**ft_read(int fd)
 ** Here's the actual parsing action
 */
 
+static	int	ft_neighbcheck(char *s)
+{
+	int i;
+	int line;
+	int linepos;
+
+	ft_putchar('\n');
+	i = -1;
+	while (s[++i] != '#')
+		;
+	line = i / 4;
+	linepos = i % 4;
+	/* printf("i: %d line of i:%d linepost of i:%d\n", i, line, linepos); */
+	if ((linepos > 0 && s[linepos - 1 * (line * 4)] == '#')
+		|| (linepos < 3 && s[linepos + 1 * (line * 4)] == '#')
+		|| (line > 0 && s[line - 1 * (linepos * 4)] == '#')
+		|| (line < 3 && s[line + 1 * (linepos * 4)] == '#'))
+	{
+		return (SUCCESS);
+	}
+	return (ERROR);
+}
+
 static	int	ft_check_n_dup(char *dst, char *src)
 {
 	int	ri;
@@ -60,14 +83,13 @@ static	int	ft_check_n_dup(char *dst, char *src)
 	elem_nbr = 0;
 	while ((*src == '.' || *src == '#' || *src == '\n') && elem_nbr <= 4)
 	{
-		if (*src == '#')
-			elem_nbr++;
+		elem_nbr = (*src == '#') ? elem_nbr + 1 : elem_nbr;
 		if (*src != '\n')
 			dst[ri++] = *src;
 		src++;
 	}
 	dst[ri] = '\0';
-	if (elem_nbr != 4 || ft_strlen(dst) != 16)
+	if (elem_nbr != 4 || ft_strlen(dst) != 16 || ft_neighbcheck(dst))
 		return (ERROR);
 	return (SUCCESS);
 }
