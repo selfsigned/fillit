@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:33:46 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/06 16:51:38 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/07 17:36:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 /*
-** read the input file and convert it to a 2D array we're going to parse later
+** Here we read the input file and convert it to a 2D array
 */
 
 char		**ft_read(int fd)
@@ -47,52 +47,35 @@ char		**ft_read(int fd)
 	return (tab);
 }
 
+static	int	ft_check(char **src)
+{
+	int	x;
+	int	y;
+	int	e_cnt;
+
+	y = -1;
+	e_cnt = 0;
+	while (++y < 4)
+	{
+		x = -1;
+		while (src[y][++x])
+		{
+			if (src[y][x] != '#' && src[y][x] != '.')
+				return (ERROR);
+			if (src[y][x] == '#' && !((x > 0 && src[y][x - 1] == '#')
+				|| (x < 3 && src[y][x + 1] == '#')
+				|| (y > 0 && src[y - 1][x] == '#')
+				|| (y < 3 && src[y + 1][x] == '#')))
+				return (ERROR);
+			e_cnt = (src[y][x] == '#') ? e_cnt + 1 : e_cnt;
+		}
+	}
+	return ((e_cnt == 4) ? SUCCESS : ERROR);
+}
+
 /*
-** Here's the actual parsing action
+** And now we... parse
 */
-
-static	int	ft_neighbcheck(char *s)
-{
-	int i;
-	int line;
-	int linepos;
-
-	ft_putchar('\n');
-	i = -1;
-	while (s[++i] != '#')
-		;
-	line = i / 4;
-	linepos = i % 4;
-	/* printf("i: %d line of i:%d linepost of i:%d\n", i, line, linepos); */
-	if ((linepos > 0 && s[linepos - 1 * (line * 4)] == '#')
-		|| (linepos < 3 && s[linepos + 1 * (line * 4)] == '#')
-		|| (line > 0 && s[line - 1 * (linepos * 4)] == '#')
-		|| (line < 3 && s[line + 1 * (linepos * 4)] == '#'))
-	{
-		return (SUCCESS);
-	}
-	return (ERROR);
-}
-
-static	int	ft_check_n_dup(char *dst, char *src)
-{
-	int	ri;
-	int elem_nbr;
-
-	ri = 0;
-	elem_nbr = 0;
-	while ((*src == '.' || *src == '#' || *src == '\n') && elem_nbr <= 4)
-	{
-		elem_nbr = (*src == '#') ? elem_nbr + 1 : elem_nbr;
-		if (*src != '\n')
-			dst[ri++] = *src;
-		src++;
-	}
-	dst[ri] = '\0';
-	if (elem_nbr != 4 || ft_strlen(dst) != 16 || ft_neighbcheck(dst))
-		return (ERROR);
-	return (SUCCESS);
-}
 
 t_tetra		*ft_parse(char **in)
 {
@@ -107,7 +90,8 @@ t_tetra		*ft_parse(char **in)
 	}
 	while (in[t])
 	{
-		if (ft_check_n_dup(tet[t].content, in[t]))
+		tet[t].content = ft_strsplit(in[t], '\n');
+		if (ft_check(tet[t].content))
 		{
 			ft_strdeltab(in, 27);
 			free(tet);

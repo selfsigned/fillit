@@ -6,7 +6,7 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/05 15:31:27 by bede-fre         ###   ########.fr        #
+#    Updated: 2017/12/07 17:25:30 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = clang
 ##### Final Cflags:
 ##### CFLAGS = -Wall -Wextra -Werror
 ##### Debug Cflags
-CFLAGS = -Wall -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Wextra -g #-fsanitize=address
 
 # Directories
 LIBFTDIR = libft

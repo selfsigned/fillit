@@ -6,22 +6,20 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:59:44 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/05 18:13:34 by bede-fre         ###   ########.fr       */
+/*   Updated: 2017/12/07 15:45:29 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <unistd.h>
 
-void	ft_display(t_map map)
+void	ft_display(char **map, int maplen)
 {
-	char	*tmp;
+	int i;
 
-	tmp = map.grid;
-	while (*tmp != '\0')
+	i = -1;
+	while (++i < maplen)
 	{
-		write(1, tmp, map.width);
-		tmp = tmp + map.width;
+		ft_putstr(map[i]);
 		ft_putchar('\n');
 	}
 }
