@@ -6,7 +6,7 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/07 18:20:54 by xperrin          ###   ########.fr        #
+#    Updated: 2017/12/07 22:42:17 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = clang
 ##### Final Cflags:
 ##### CFLAGS = -Wall -Wextra -Werror
 ##### Debug Cflags
-CFLAGS = -Wall -Wextra -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -g -fsanitize=address
 
 # Directories
 LIBFTDIR = libft
@@ -29,7 +29,7 @@ INCFILES =	includes/fillit.h \
 # Files
 SRCFILES =	helpers.c	\
 		read.c		\
-		move_checks.c	\
+		parse_move.c	\
 		solve.c		\
 		print.c		\
 		main.c

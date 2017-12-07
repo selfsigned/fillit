@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_checks.c                                      :+:      :+:    :+:   */
+/*   parse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 11:31:45 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/07 15:30:28 by bede-fre         ###   ########.fr       */
+/*   Updated: 2017/12/07 21:16:32 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_check_line(char *s)
+static	int		line_isempty(char *s)
 {
 	int		i;
 
@@ -20,13 +20,13 @@ int		ft_check_line(char *s)
 	while (s[i] != '\0')
 	{
 		if (s[i] == '#')
-			return (0);
+			return (FALSE);
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
 
-int		ft_check_column(char **tab)
+static	int		column_isempty(char **tab)
 {
 	int		i;
 
@@ -37,10 +37,10 @@ int		ft_check_column(char **tab)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
 
-void	ft_replace_line(char **tab)
+static	void	ft_replace_line(char **tab)
 {
 	int		i;
 	char	*c;
@@ -55,7 +55,7 @@ void	ft_replace_line(char **tab)
 	}
 }
 
-void	ft_replace_column(char **tab)
+static	void	ft_replace_column(char **tab)
 {
 	int		i;
 	int		j;
@@ -76,38 +76,18 @@ void	ft_replace_column(char **tab)
 	}
 }
 
-void	ft_move_left(char **tab)
+void			ft_move_left(char **tab)
 {
 	int		i;
 
 	i = 0;
 	if (tab[0][0] == '#')
 		return ;
-	while (ft_check_line(tab[0]) != 0 || ft_check_column(tab) != 0)
+	while (line_isempty(tab[0]) != 0 || column_isempty(tab) != 0)
 	{
-		if (ft_check_line(tab[0]) == 1)
+		if (line_isempty(tab[0]))
 			ft_replace_line(tab);
-		if (ft_check_column(tab) == 1)
+		if (column_isempty(tab))
 			ft_replace_column(tab);
-	}
-}
-
-void	ft_tetra_letter(char **tab, int tet_nbr)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (j < 4)
-	{
-		i = 0;
-		while (i < 4)
-		{
-			if (tab[j][i] == '#')
-				tab[j][i] += 30 + tet_nbr;
-			i++;
-		}
-		j++;
 	}
 }

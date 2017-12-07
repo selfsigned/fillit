@@ -6,29 +6,29 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/07 17:58:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/07 22:38:04 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <unistd.h>
 #include <fcntl.h>
-#include <stdlib.h>
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	int		fd;
 	char	**input;
 	t_tetra	*t_in;
+	int		i;
 
 	fd = 0;
+	i = -1;
 	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) <= 0)
 		ft_error();
 	if (!(input = ft_read(fd)))
 		ft_error();
 	t_in = ft_parse(input);
-	ft_display(t_in[2].content, 4);
-	// Cleaning up after our mess (WIP freeing everything)
-	ft_strdeltab(input, 27);
-	free(t_in);
+	while(t_in[++i].content) {
+		ft_display(t_in[i].content, 4); ft_putchar('\n');
+	}
+	free_mem(t_in, input);
 }
