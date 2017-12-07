@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 11:31:45 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/07 11:34:34 by bede-fre         ###   ########.fr       */
+/*   Updated: 2017/12/07 15:30:28 by bede-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,25 @@ void	ft_move_left(char **tab)
 			ft_replace_line(tab);
 		if (ft_check_column(tab) == 1)
 			ft_replace_column(tab);
+	}
+}
+
+void	ft_tetra_letter(char **tab, int tet_nbr)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (j < 4)
+	{
+		i = 0;
+		while (i < 4)
+		{
+			if (tab[j][i] == '#')
+				tab[j][i] += 30 + tet_nbr;
+			i++;
+		}
+		j++;
 	}
 }
