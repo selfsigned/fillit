@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/07 22:38:04 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/08 16:56:05 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int				main(int argc, char **argv)
 	if (!(input = ft_read(fd)))
 		ft_error();
 	t_in = ft_parse(input);
-	while(t_in[++i].content) {
-		ft_display(t_in[i].content, 4); ft_putchar('\n');
-	}
+	while (t_in[++i].content)
+		ft_display(t_in[i].content, 4);
 	free_mem(t_in, input);
 }

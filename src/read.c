@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xperrin <xperrin@student.42.fr             +#+  +:+       +#+        */
+/*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/03 18:33:46 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/07 22:37:33 by xperrin          ###   ########.fr       */
+/*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
+/*   Updated: 2017/12/08 19:15:19 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <unistd.h>
 
-static	int			ft_check(char **src)
+static	int		ft_check(char **src)
 {
 	int	x;
 	int	y;
@@ -28,11 +28,17 @@ static	int			ft_check(char **src)
 		{
 			if (src[y][x] != '#' && src[y][x] != '.')
 				return (ERROR);
-			if (src[y][x] == '#' && !((x > 0 && src[y][x - 1] == '#')
+			if (src[y][x] == '#' && e_cnt != 3
+				&& !((x > 0 && src[y][x - 1] == '#')
 				|| (x < 3 && src[y][x + 1] == '#')
 				|| (y > 0 && src[y - 1][x] == '#')
 				|| (y < 3 && src[y + 1][x] == '#')))
 				return (ERROR);
+			/* else if (src[y][x] && e_cnt == 3 */
+			/* 	&& !((x < 3 && src[y][x + 1] == '#') */
+			/* 	|| (y > 0 && src[y - 1][x] == '#') */
+			/* 	|| (y < 3 && src[y + 1][x] == '#'))) */
+			/* 	return (ERROR); */
 			e_cnt = (src[y][x] == '#') ? e_cnt + 1 : e_cnt;
 		}
 	}
@@ -63,7 +69,7 @@ static	void	ft_tetra_letter(char **tab, int tet_nbr)
 ** Here we read the input file and convert it to a 2D array
 */
 
-char				**ft_read(int fd)
+char			**ft_read(int fd)
 {
 	char	buf[READ_SIZE];
 	int		seek;
@@ -96,7 +102,7 @@ char				**ft_read(int fd)
 ** And now we... parse
 */
 
-t_tetra		*ft_parse(char **in)
+t_tetra			*ft_parse(char **in)
 {
 	t_tetra	*tet;
 	int		t;
