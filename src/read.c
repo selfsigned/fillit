@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 01:07:51 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/10 01:44:28 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static	int		ft_count_connections(char **src, int y, int x)
 	int	con;
 
 	con = 0;
-	if (src[y][x] == '#' && (x > 0 && src[y][x - 1] == '#'))
+	if (x > 0 && src[y][x - 1] == '#')
 		con++;
-	if (src[y][x] == '#' && (x < 3 && src[y][x + 1] == '#'))
+	if (x < 3 && src[y][x + 1] == '#')
 		con++;
-	if (src[y][x] == '#' && (y > 0 && src[y - 1][x] == '#'))
+	if (y > 0 && src[y - 1][x] == '#')
 		con++;
-	if (src[y][x] == '#' && (y < 3 && src[y + 1][x] == '#'))
+	if (y < 3 && src[y + 1][x] == '#')
 		con++;
 	return (con);
 }
@@ -34,7 +34,7 @@ static	int		ft_check(char **src)
 	int	x;
 	int	y;
 	int	e_cnt;
-	int con;
+	int	con;
 
 	y = -1;
 	e_cnt = 0;
@@ -44,10 +44,13 @@ static	int		ft_check(char **src)
 		x = -1;
 		while (src[y][++x])
 		{
-			if (src[y][x] != '#' && src[y][x] != '.')
+			if (src[y][x] == '#')
+			{
+				e_cnt++;
+				con += ft_count_connections(src, y, x);
+			}
+			else if (src[y][x] != '.')
 				return (ERROR);
-			con += ft_count_connections(src, y, x);
-			e_cnt = (src[y][x] == '#') ? e_cnt + 1 : e_cnt;
 		}
 	}
 	return ((e_cnt == 4 && (con == 6 || con == 8)) ? SUCCESS : ERROR);
