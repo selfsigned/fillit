@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/08 19:17:44 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/10 21:17:09 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			ft_move_left(char **tab);
 ** solve.c
 */
 int				ft_algo(t_tetra *tet_in, t_map map, int mapwidth);
-t_map			ft_solve(t_tetra *tet_in, t_map map);
+void			ft_solve(t_tetra *tet_in);
 
 /*
 ** print.c
