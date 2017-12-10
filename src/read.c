@@ -6,21 +6,39 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/08 19:15:19 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/10 01:07:51 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <unistd.h>
 
+static	int		ft_count_connections(char **src, int y, int x)
+{
+	int	con;
+
+	con = 0;
+	if (src[y][x] == '#' && (x > 0 && src[y][x - 1] == '#'))
+		con++;
+	if (src[y][x] == '#' && (x < 3 && src[y][x + 1] == '#'))
+		con++;
+	if (src[y][x] == '#' && (y > 0 && src[y - 1][x] == '#'))
+		con++;
+	if (src[y][x] == '#' && (y < 3 && src[y + 1][x] == '#'))
+		con++;
+	return (con);
+}
+
 static	int		ft_check(char **src)
 {
 	int	x;
 	int	y;
 	int	e_cnt;
+	int con;
 
 	y = -1;
 	e_cnt = 0;
+	con = 0;
 	while (++y < 4)
 	{
 		x = -1;
@@ -28,21 +46,11 @@ static	int		ft_check(char **src)
 		{
 			if (src[y][x] != '#' && src[y][x] != '.')
 				return (ERROR);
-			if (src[y][x] == '#' && e_cnt != 3
-				&& !((x > 0 && src[y][x - 1] == '#')
-				|| (x < 3 && src[y][x + 1] == '#')
-				|| (y > 0 && src[y - 1][x] == '#')
-				|| (y < 3 && src[y + 1][x] == '#')))
-				return (ERROR);
-			/* else if (src[y][x] && e_cnt == 3 */
-			/* 	&& !((x < 3 && src[y][x + 1] == '#') */
-			/* 	|| (y > 0 && src[y - 1][x] == '#') */
-			/* 	|| (y < 3 && src[y + 1][x] == '#'))) */
-			/* 	return (ERROR); */
+			con += ft_count_connections(src, y, x);
 			e_cnt = (src[y][x] == '#') ? e_cnt + 1 : e_cnt;
 		}
 	}
-	return ((e_cnt == 4) ? SUCCESS : ERROR);
+	return ((e_cnt == 4 && (con == 6 || con == 8)) ? SUCCESS : ERROR);
 }
 
 static	void	ft_tetra_letter(char **tab, int tet_nbr)
