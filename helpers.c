@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:42:12 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 22:10:11 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/11 19:52:39 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,24 @@ void	free_mem(t_tetra *tab, char **input)
 {
 	ft_strdeltab(input, 27);
 	free_tet(tab);
+}
+
+void	ft_tetra_letter(char **tab, int tet_nbr)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (j < 4)
+	{
+		i = 0;
+		while (i < 4)
+		{
+			if (tab[j][i] == '#')
+				tab[j][i] += 30 + tet_nbr;
+			i++;
+		}
+		j++;
+	}
 }

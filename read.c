@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 22:07:42 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/11 20:00:07 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,27 @@ static	int		ft_check(char **src)
 	return ((e_cnt == 4 && (con == 6 || con == 8)) ? SUCCESS : ERROR);
 }
 
-static	void	ft_tetra_letter(char **tab, int tet_nbr)
+static	t_tetra	count_len_width(t_tetra t)
 {
-	int		i;
-	int		j;
+	int x;
+	int l;
 
-	i = 0;
-	j = 0;
-	while (j < 4)
+	l = 0;
+	x = -1;
+	t.l_w[0] = 0;
+	t.l_w[1] = 0;
+	while (++x < 4)
 	{
-		i = 0;
-		while (i < 4)
-		{
-			if (tab[j][i] == '#')
-				tab[j][i] += 30 + tet_nbr;
-			i++;
-		}
-		j++;
+		if (!column_isempty(t.content, x))
+			t.l_w[0]++;
 	}
+	x = -1;
+	while (++x < 4)
+	{
+		if (!line_isempty(t.content[x]))
+			t.l_w[1] += 1;
+	}
+	return (t);
 }
 
 /*
@@ -133,8 +136,8 @@ t_tetra			*ft_parse(char **in)
 			ft_error();
 		}
 		ft_move_left(tet[t].content);
+		tet[t] = count_len_width(tet[t]);
 		ft_tetra_letter(tet[t].content, t);
-		tet[t].index = t;
 	}
 	ft_strdeltab(in, 27);
 	return (tet);

@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 22:10:58 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/11 19:57:33 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct	s_tetra
 {
 	char	**content;
-	int		index;
+	int		l_w[2];
 }				t_tetra;
 
 typedef struct	s_map
@@ -41,6 +41,7 @@ typedef struct	s_map
 void			ft_error(void);
 void			free_tet(t_tetra *tab);
 void			free_mem(t_tetra *tab, char **input);
+void			ft_tetra_letter(char **content, int tetnbr);
 
 /*
 ** read.c:
@@ -54,6 +55,8 @@ t_tetra			*ft_parse(char **input);
 /*
 **parse_move.c
 */
+int				line_isempty(char *s);
+int				column_isempty(char **s, int x);
 void			ft_move_left(char **tab);
 
 /*

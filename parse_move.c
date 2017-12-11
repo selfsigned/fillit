@@ -6,13 +6,13 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 11:31:45 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/07 21:16:32 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/11 20:00:47 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static	int		line_isempty(char *s)
+int				line_isempty(char *s)
 {
 	int		i;
 
@@ -26,17 +26,14 @@ static	int		line_isempty(char *s)
 	return (TRUE);
 }
 
-static	int		column_isempty(char **tab)
+int				column_isempty(char **grid, int x)
 {
-	int		i;
+	int y;
 
-	i = 0;
-	while (i < 4)
-	{
-		if (tab[i][0] == '#')
-			return (0);
-		i++;
-	}
+	y = -1;
+	while (++y < 4)
+		if (grid[y][x] == '#')
+			return (FALSE);
 	return (TRUE);
 }
 
@@ -83,11 +80,11 @@ void			ft_move_left(char **tab)
 	i = 0;
 	if (tab[0][0] == '#')
 		return ;
-	while (line_isempty(tab[0]) != 0 || column_isempty(tab) != 0)
+	while (line_isempty(tab[0]) != 0 || column_isempty(tab, 0) != 0)
 	{
 		if (line_isempty(tab[0]))
 			ft_replace_line(tab);
-		if (column_isempty(tab))
+		if (column_isempty(tab, 0))
 			ft_replace_column(tab);
 	}
 }

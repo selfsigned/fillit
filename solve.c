@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:58:21 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/11 15:19:18 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/11 20:09:30 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*
 ** Returning a new clean map
 */
+
 static	char	**alloc_and_fill(size_t mapw)
 {
 	size_t	y;
@@ -41,7 +42,7 @@ static	char	**alloc_and_fill(size_t mapw)
 ** Checking if we can place the tetra on the map at the given coordinates
 */
 
-static	int		is_placeable(t_tetra tet, t_map  map, int y, int x)
+static	int		is_placeable(t_tetra tet, t_map map, int y, int x)
 {
 	int	i;
 	int	j;
@@ -91,7 +92,7 @@ int				ft_algo(t_tetra *tet_in, t_map map, int mapw)
 ** Here we call the algo until we've got the right map
 */
 
-void		ft_solve(t_tetra *tet_in)
+void			ft_solve(t_tetra *tet_in)
 {
 	t_map	map;
 	int		width;
@@ -107,7 +108,7 @@ void		ft_solve(t_tetra *tet_in)
 	/* 	map.grid = alloc_and_fill(width); */
 	/* } */
 	place_on_map(tet_in[0], map, 0, 0);
-	place_on_map(tet_in[1], map, 2, 0);
+	/* place_on_map(tet_in[1], map, 2, 0); */
 	ft_display(map.grid, width);
 	ft_strdeltab(map.grid, width + 1);
 }
