@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 01:44:28 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/10 22:07:42 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,6 @@ t_tetra			*ft_parse(char **in)
 		ft_tetra_letter(tet[t].content, t);
 		tet[t].index = t;
 	}
+	ft_strdeltab(in, 27);
 	return (tet);
 }

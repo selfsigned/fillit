@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 21:17:09 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/10 22:10:58 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_map
 # define ERROR_MSG "error\n"
 
 void			ft_error(void);
+void			free_tet(t_tetra *tab);
 void			free_mem(t_tetra *tab, char **input);
 
 /*

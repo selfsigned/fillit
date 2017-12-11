@@ -6,7 +6,7 @@
 /*   By: xperrin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/10 21:17:12 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/10 22:10:22 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int				main(int argc, char **argv)
 	/* while (t_in[++i].content) */
 	/* 	ft_display(t_in[i].content, 4); */
 	ft_solve(t_in);
-	free_mem(t_in, input);
+	free_tet(t_in);
 }
