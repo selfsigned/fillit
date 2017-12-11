@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:58:21 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/11 13:41:17 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/11 15:19:18 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ static	int		is_placeable(t_tetra tet, t_map  map, int y, int x)
 	{
 		j = -1;
 		while (++j < 4)
-		{
 			if (ft_isalpha(map.grid[y + i][x + j])
-					&& ft_isalpha(tet.content[i][j]))
+				&& ft_isalpha(tet.content[i][j]))
 				return (FALSE);
-		}
 	}
 	return (TRUE);
 }
@@ -65,17 +63,21 @@ static	void	place_on_map(t_tetra tet, t_map map, int y, int x)
 	int	i;
 	int	j;
 	int	cnt;
+	int wdh;
 
 	i = -1;
 	cnt = 0;
-	while (++i < 4)
+	wdh = (map.width < 4) ? map.width : 4;
+	while (++i < wdh)
 	{
 		j = -1;
-		while (++j < 4 && cnt != 4)
+		while (++j < wdh && cnt < 4)
 		{
-			if (ft_isalpha(map.grid[y + i][x + j])
-					&& ft_isalpha(tet.content[i][j]))
+			if (ft_isalpha(tet.content[i][j]))
+			{
 				map.grid[y + i][x + j] = tet.content[i][j];
+				cnt++;
+			}
 		}
 	}
 }
@@ -105,6 +107,7 @@ void		ft_solve(t_tetra *tet_in)
 	/* 	map.grid = alloc_and_fill(width); */
 	/* } */
 	place_on_map(tet_in[0], map, 0, 0);
+	place_on_map(tet_in[1], map, 2, 0);
 	ft_display(map.grid, width);
 	ft_strdeltab(map.grid, width + 1);
 }
