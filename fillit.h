@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/11 19:57:33 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/12 16:27:42 by bede-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct	s_tetra
 {
 	char	**content;
-	int		l_w[2];
+	int		h_w[2];
 }				t_tetra;
 
 typedef struct	s_map
@@ -31,6 +31,7 @@ typedef struct	s_map
 	char	**grid;
 	int		width;
 	int		is_solved;
+	int		ctet;
 }				t_map;
 
 /*
@@ -62,8 +63,14 @@ void			ft_move_left(char **tab);
 /*
 ** solve.c
 */
-int				ft_algo(t_tetra *tet_in, t_map map, int mapwidth);
+int				ft_algo(t_tetra *tet_in, t_map map, int tetnbr);
 void			ft_solve(t_tetra *tet_in);
+
+/*
+** solvefun.c
+*/
+void	place_on_map(t_tetra tet, t_map map, int y, int x);
+void	remove_on_map(t_map map, int tetnbr);
 
 /*
 ** print.c

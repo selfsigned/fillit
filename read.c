@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/11 20:00:07 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/12 16:14:42 by bede-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ static	t_tetra	count_len_width(t_tetra t)
 
 	l = 0;
 	x = -1;
-	t.l_w[0] = 0;
-	t.l_w[1] = 0;
+	t.h_w[0] = 0;
+	t.h_w[1] = 0;
 	while (++x < 4)
 	{
 		if (!column_isempty(t.content, x))
-			t.l_w[0]++;
+			t.h_w[0]++;
 	}
 	x = -1;
 	while (++x < 4)
 	{
 		if (!line_isempty(t.content[x]))
-			t.l_w[1] += 1;
+			t.h_w[1] += 1;
 	}
 	return (t);
 }

@@ -6,7 +6,7 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/11 20:03:15 by xperrin          ###   ########.fr        #
+#    Updated: 2017/12/12 16:10:04 by bede-fre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC =	helpers.c	\
 	read.c		\
 	parse_move.c	\
 	solve.c		\
+	solvefun.c	\
 	print.c		\
 	main.c
 OBJ = $(SRC:.c=.o)

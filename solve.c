@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:58:21 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/11 20:09:30 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/12 16:36:38 by bede-fre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,28 @@ static	int		is_placeable(t_tetra tet, t_map map, int y, int x)
 	return (TRUE);
 }
 
-static	void	place_on_map(t_tetra tet, t_map map, int y, int x)
+int				ft_algo(t_tetra *tet_in, t_map map, int tetnbr)
 {
-	int	i;
-	int	j;
-	int	cnt;
-	int wdh;
+	int x;
+	int y;
+	int t;
 
-	i = -1;
-	cnt = 0;
-	wdh = (map.width < 4) ? map.width : 4;
-	while (++i < wdh)
+	t = 0;
+	y = 0;
+	while ((y < map.width) && (x < map.width))
 	{
-		j = -1;
-		while (++j < wdh && cnt < 4)
+		x = 0;
+		if (is_placeable(tet_in[tetnbr], map, y, x))
 		{
-			if (ft_isalpha(tet.content[i][j]))
-			{
-				map.grid[y + i][x + j] = tet.content[i][j];
-				cnt++;
-			}
+			place_on_map(tet_in[tetnbr], map, y, x);
+			if (ft_algo(tet_in, map, tetnbr + 1))
+				return (SUCCESS);
+			remove_on_map(map, tetnbr);
+			x++;
 		}
+		y++;
 	}
-}
-
-int				ft_algo(t_tetra *tet_in, t_map map, int mapw)
-{
-	return (ERROR);
+	return (FALSE);
 }
 
 /*
@@ -95,20 +90,20 @@ int				ft_algo(t_tetra *tet_in, t_map map, int mapw)
 void			ft_solve(t_tetra *tet_in)
 {
 	t_map	map;
-	int		width;
 
-	width = 4;
-	map.width = width;
+	map.ctet = 0;
+	map.width = 4;
 	map.is_solved = 0;
-	map.grid = alloc_and_fill(width);
-	/* while (!ft_algo(tet_in, map, width)) */
+	map.grid = alloc_and_fill(map.width);
+	/* while (!ft_algo(tet_in, map, 0)) */
 	/* { */
-	/* 	width++; */
+	/* 	ft_display(map.grid, map.width); */
+	/* 	map.width++; */
 	/* 	free(map.grid); */
-	/* 	map.grid = alloc_and_fill(width); */
+	/* 	map.grid = alloc_and_fill(map.width); */
 	/* } */
 	place_on_map(tet_in[0], map, 0, 0);
 	/* place_on_map(tet_in[1], map, 2, 0); */
-	ft_display(map.grid, width);
-	ft_strdeltab(map.grid, width + 1);
+	ft_display(map.grid, map.width);
+	ft_strdeltab(map.grid, map.width  + 1);
 }
