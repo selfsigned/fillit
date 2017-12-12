@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:58:21 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/12 20:18:57 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/12 23:40:35 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,22 @@ int				ft_algo(t_tetra *tet_in, t_map map, int tetnbr)
 	int y;
 	int t;
 
+	if (tetnbr == map.ctet)
+		return (SUCCESS);
 	t = 0;
 	y = 0;
-	while ((y < map.width) && (x < map.width))
+	while (y < map.width)
 	{
 		x = 0;
-		if (is_placeable(tet_in[tetnbr], map, y, x))
+		while (x < map.width)
 		{
-			place_on_map(tet_in[tetnbr], map, y, x);
-			if (ft_algo(tet_in, map, tetnbr + 1))
-				return (SUCCESS);
-			remove_on_map(map, tetnbr);
+			if (is_placeable(tet_in[tetnbr], map, y, x))
+			{
+				place_on_map(tet_in[tetnbr], map, y, x);
+				if (ft_algo(tet_in, map, tetnbr + 1))
+					return (SUCCESS);
+				remove_on_map(map, tetnbr);
+			}
 			x++;
 		}
 		y++;
@@ -93,20 +98,17 @@ void			ft_solve(t_tetra *tet_in)
 {
 	t_map	map;
 
-	map.ctet = 0;
-	map.width = 5;
+	map.ctet = count_tetra(tet_in);
+	map.width = 2;
 	map.is_solved = 0;
 	map.grid = alloc_and_fill(map.width);
-	/* while (!ft_algo(tet_in, map, 0)) */
-	/* { */
-	/* 	ft_display(map.grid, map.width); */
-	/* 	map.width++; */
-	/* 	free(map.grid); */
-	/* 	map.grid = alloc_and_fill(map.width); */
-	/* } */
-	int x = 1; int y = 1;
-	if (is_placeable(tet_in[0], map, y, x))
-		place_on_map(tet_in[0], map, y, x);
+	while (!ft_algo(tet_in, map, 0))
+	{
+		map.width++;
+		ft_strdeltab(map.grid, map.width  + 1);
+		map.grid = alloc_and_fill(map.width);
+	}
+	/* ft_algo(tet_in, map, 0); */
 	ft_display(map.grid, map.width);
 	ft_strdeltab(map.grid, map.width  + 1);
 }

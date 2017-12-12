@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:42:12 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/11 19:52:39 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/12 23:02:21 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,14 @@ void	ft_tetra_letter(char **tab, int tet_nbr)
 		}
 		j++;
 	}
+}
+
+int		count_tetra(t_tetra *tet)
+{
+	int i;
+
+	i = -1;
+	while (tet[++i].content)
+		;
+	return (i);
 }

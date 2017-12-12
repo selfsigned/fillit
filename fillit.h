@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/12 16:27:42 by bede-fre         ###   ########.fr       */
+/*   Updated: 2017/12/12 23:02:00 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void			ft_error(void);
 void			free_tet(t_tetra *tab);
 void			free_mem(t_tetra *tab, char **input);
 void			ft_tetra_letter(char **content, int tetnbr);
+int				count_tetra(t_tetra *tet);
 
 /*
 ** read.c:
