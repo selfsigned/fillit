@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 17:10:08 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/12 16:29:14 by bede-fre         ###   ########.fr       */
+/*   Updated: 2017/12/13 00:51:30 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	remove_on_map(t_map map, int tet_nbr)
 		j = -1;
 		while (++j < wdh && cnt < 4)
 		{
-			if (map.grid[i][j] == 30 + tet_nbr)
+			if (map.grid[i][j] == 'A' + tet_nbr)
 			{
 				map.grid[i][j] = '.';
 				cnt++;

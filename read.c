@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/12 19:52:51 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/13 00:14:33 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ static	int		ft_check(char **src)
 static	t_tetra	count_len_width(t_tetra t)
 {
 	int x;
-	int l;
 
-	l = 0;
 	x = -1;
 	t.h_w[0] = 0;
 	t.h_w[1] = 0;

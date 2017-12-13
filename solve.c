@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:58:21 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/12 23:40:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/13 00:58:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,31 +61,26 @@ static	int		is_placeable(t_tetra tet, t_map map, int y, int x)
 	return (TRUE);
 }
 
-int				ft_algo(t_tetra *tet_in, t_map map, int tetnbr)
+int				ft_algo(t_tetra *tet, t_map map, int tetnbr)
 {
 	int x;
 	int y;
-	int t;
 
 	if (tetnbr == map.ctet)
 		return (SUCCESS);
-	t = 0;
-	y = 0;
-	while (y < map.width)
+	y = -1;
+	while (++y < map.width - tet[tetnbr].h_w[0] + 1)
 	{
-		x = 0;
-		while (x < map.width)
-		{
-			if (is_placeable(tet_in[tetnbr], map, y, x))
+		x = -1;
+		while (++x < map.width - tet[tetnbr].h_w[1] + 1)
+			if (is_placeable(tet[tetnbr], map, y, x))
 			{
-				place_on_map(tet_in[tetnbr], map, y, x);
-				if (ft_algo(tet_in, map, tetnbr + 1))
+				place_on_map(tet[tetnbr], map, y, x);
+				if (ft_algo(tet, map, tetnbr + 1))
 					return (SUCCESS);
-				remove_on_map(map, tetnbr);
+				else
+					remove_on_map(map, tetnbr);
 			}
-			x++;
-		}
-		y++;
 	}
 	return (FALSE);
 }
@@ -99,7 +94,7 @@ void			ft_solve(t_tetra *tet_in)
 	t_map	map;
 
 	map.ctet = count_tetra(tet_in);
-	map.width = 2;
+	map.width = 4;
 	map.is_solved = 0;
 	map.grid = alloc_and_fill(map.width);
 	while (!ft_algo(tet_in, map, 0))
@@ -108,7 +103,6 @@ void			ft_solve(t_tetra *tet_in)
 		ft_strdeltab(map.grid, map.width  + 1);
 		map.grid = alloc_and_fill(map.width);
 	}
-	/* ft_algo(tet_in, map, 0); */
 	ft_display(map.grid, map.width);
 	ft_strdeltab(map.grid, map.width  + 1);
 }
