@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/12 23:02:00 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/13 18:08:42 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,12 @@ void			ft_solve(t_tetra *tet_in);
 /*
 ** solvefun.c
 */
-void	place_on_map(t_tetra tet, t_map map, int y, int x);
-void	remove_on_map(t_map map, int tetnbr);
+void			place_on_map(t_tetra tet, t_map map, int y, int x);
+void			remove_on_map(t_map map, int tetnbr);
 
 /*
-** print.c
+** main.c
 */
 void			ft_display(char **map, int maplen);
-
-/*
-** main.c:
-*/
 
 #endif

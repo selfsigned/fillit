@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 15:58:21 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/13 00:58:17 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/13 17:57:50 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,19 @@ int				ft_algo(t_tetra *tet, t_map map, int tetnbr)
 void			ft_solve(t_tetra *tet_in)
 {
 	t_map	map;
+	int		tetsqrt;
 
 	map.ctet = count_tetra(tet_in);
-	map.width = 4;
+	tetsqrt = ft_sqrt(map.ctet * 4);
+	map.width = (tetsqrt) ? tetsqrt : 2;
 	map.is_solved = 0;
 	map.grid = alloc_and_fill(map.width);
 	while (!ft_algo(tet_in, map, 0))
 	{
 		map.width++;
-		ft_strdeltab(map.grid, map.width  + 1);
+		ft_strdeltab(map.grid, map.width);
 		map.grid = alloc_and_fill(map.width);
 	}
 	ft_display(map.grid, map.width);
-	ft_strdeltab(map.grid, map.width  + 1);
+	ft_strdeltab(map.grid, map.width);
 }

@@ -6,16 +6,13 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/12 16:10:04 by bede-fre         ###   ########.fr        #
+#    Updated: 2017/12/13 18:09:02 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = clang
-##### Final Cflags:
-##### CFLAGS = -Wall -Wextra -Werror
-##### Debug Cflags
-CFLAGS = -Wall -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 # Directories
 LIBFTDIR = libft
@@ -29,7 +26,6 @@ SRC =	helpers.c	\
 	parse_move.c	\
 	solve.c		\
 	solvefun.c	\
-	print.c		\
 	main.c
 OBJ = $(SRC:.c=.o)
 LIBAR = $(LIBFTDIR)/libft.a

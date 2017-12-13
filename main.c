@@ -6,12 +6,24 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/13 01:01:08 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/13 18:08:12 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <fcntl.h>
+
+void	ft_display(char **map, int maplen)
+{
+	int i;
+
+	i = -1;
+	while (++i < maplen)
+	{
+		ft_putstr(map[i]);
+		ft_putchar('\n');
+	}
+}
 
 int				main(int argc, char **argv)
 {
