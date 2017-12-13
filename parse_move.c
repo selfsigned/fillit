@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 11:31:45 by bede-fre          #+#    #+#             */
-/*   Updated: 2017/12/11 20:00:47 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/13 22:51:28 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,6 @@ static	void	ft_replace_column(char **tab)
 
 void			ft_move_left(char **tab)
 {
-	int		i;
-
-	i = 0;
 	if (tab[0][0] == '#')
 		return ;
 	while (line_isempty(tab[0]) != 0 || column_isempty(tab, 0) != 0)
