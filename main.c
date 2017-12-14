@@ -6,11 +6,12 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/13 18:08:12 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/14 16:07:41 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdlib.h>
 #include <fcntl.h>
 
 void	ft_display(char **map, int maplen)
@@ -32,7 +33,12 @@ int				main(int argc, char **argv)
 	t_tetra	*t_in;
 
 	fd = 0;
-	if (argc != 2 || (fd = open(argv[1], O_RDONLY)) <= 0)
+	if (argc != 2)
+	{
+		ft_putstr("usage: fillit source_file\n");
+		exit (1);
+	}
+	if ((fd = open(argv[1], O_RDONLY)) <= 0)
 		ft_error();
 	if (!(input = ft_read(fd)))
 		ft_error();
