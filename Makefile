@@ -6,7 +6,7 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/13 18:09:02 by xperrin          ###   ########.fr        #
+#    Updated: 2017/12/14 18:51:47 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ CFLAGS = -Wall -Wextra -Werror
 # Directories
 LIBFTDIR = libft
 FT = -L$(LIBFTDIR) -lft
-INC = -I. -I$(LIBFTDIR)
-INCFILES = fillit.h libft/libft.h
+INC = -Isrc -I$(LIBFTDIR)
+INCFILES = src/fillit.h libft/libft.h
 
 # Files
 SRC =	helpers.c	\
@@ -27,6 +27,7 @@ SRC =	helpers.c	\
 	solve.c		\
 	solvefun.c	\
 	main.c
+SRCDIR = src
 OBJ = $(SRC:.c=.o)
 LIBAR = $(LIBFTDIR)/libft.a
 
@@ -43,7 +44,7 @@ endif
 # MSGS
 LIBFTCOMPILE_MSG = "Compiling the libft with $(THREADS) threads."
 LIBFTCLEAN_MSG = "Removing the libft objects"
-OBJCLEAN_MSG = "Removing the objectsy"
+OBJCLEAN_MSG = "Removing the objects"
 
 .PHONY: all clean fclean re
 
@@ -56,7 +57,7 @@ $(LIBAR):
 $(NAME): $(LIBAR) $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(FT)
 
-%.o: %.c $(INCFILES)
+%.o: $(SRCDIR)/%.c $(INCFILES)
 	$(CC) $(CFLAGS) -c -o $@ $< $(INC)
 
 # Cleanup
