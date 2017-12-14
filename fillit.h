@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 00:54:29 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/13 18:08:42 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/14 18:08:49 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct	s_map
 {
 	char	**grid;
 	int		width;
-	int		is_solved;
 	int		ctet;
 }				t_map;
 
