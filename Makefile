@@ -6,7 +6,7 @@
 #    By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 14:45:12 by xperrin           #+#    #+#              #
-#    Updated: 2017/12/14 18:51:47 by xperrin          ###   ########.fr        #
+#    Updated: 2017/12/15 15:04:58 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,18 +31,8 @@ SRCDIR = src
 OBJ = $(SRC:.c=.o)
 LIBAR = $(LIBFTDIR)/libft.a
 
-# Threads
-OS = $(shell uname)
-ifeq ($(OS), Darwin)
-	THREADS = $(shell sysctl -n hw.ncpu)
-else ifeq ($(OS), Linux)
-	THREADS = $(shell nproc)
-else
-	THREADS = 2
-endif
-
 # MSGS
-LIBFTCOMPILE_MSG = "Compiling the libft with $(THREADS) threads."
+LIBFTCOMPILE_MSG = "Compiling the libft."
 LIBFTCLEAN_MSG = "Removing the libft objects"
 OBJCLEAN_MSG = "Removing the objects"
 
@@ -52,7 +42,7 @@ all: $(NAME)
 
 $(LIBAR):
 	@echo $(LIBFTCOMPILE_MSG)
-	@$(MAKE) -C $(LIBFTDIR) -j $(THREADS) --no-print-directory
+	@$(MAKE) -C $(LIBFTDIR) --no-print-directory
 
 $(NAME): $(LIBAR) $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(FT)

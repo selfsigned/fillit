@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/03 18:27:49 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/14 16:07:41 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/15 15:22:05 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_display(char **map, int maplen)
 	}
 }
 
-int				main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int		fd;
 	char	**input;
@@ -36,7 +36,7 @@ int				main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putstr("usage: fillit source_file\n");
-		exit (1);
+		exit(1);
 	}
 	if ((fd = open(argv[1], O_RDONLY)) <= 0)
 		ft_error();
