@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:56:48 by xperrin           #+#    #+#             */
-/*   Updated: 2017/12/13 00:14:33 by xperrin          ###   ########.fr       */
+/*   Updated: 2017/12/15 22:15:02 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static	int		ft_check(char **src)
 			else if (src[y][x] != '.')
 				return (ERROR);
 		}
+		if (x != 4)
+			return (ERROR);
 	}
 	return ((e_cnt == 4 && (con == 6 || con == 8)) ? SUCCESS : ERROR);
 }
@@ -72,7 +74,7 @@ static	t_tetra	count_len_width(t_tetra t)
 	while (++x < 4)
 	{
 		if (!line_isempty(t.content[x]))
-			t.h_w[0] += 1;
+			t.h_w[0]++;
 	}
 	return (t);
 }
